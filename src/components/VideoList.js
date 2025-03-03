@@ -1,7 +1,7 @@
 import { Container } from "./Video";
 import Playbutton from "./Playbutton";
 
-function VideoList({obj,deleteVideos,editVideos}){
+function VideoList({obj,dispatch,editVideos}){
     return(
         <>
         {obj.map((videos) => (
@@ -13,8 +13,8 @@ function VideoList({obj,deleteVideos,editVideos}){
               time={videos.time}
               channel={videos.channel}
               id={videos.id}
-              deleteVideos={deleteVideos}
               editVideos={editVideos}
+              dispatch={dispatch}
             >
               <Playbutton
                 onPlay={() => console.log("Playing", videos.title)}

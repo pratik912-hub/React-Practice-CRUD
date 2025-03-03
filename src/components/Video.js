@@ -17,7 +17,7 @@ function Lorem() {
   return <div className={colour}>Lorem</div>;
 }
 
-function Container({title,views,time,channel,verified,id,children,deleteVideos,editVideos}) {
+function Container({title,views,time,channel,verified,id,children,dispatch,editVideos}) {
   let channeJSX;
 //  if(verified){
 //   channeJSX = <p>{channel}✅</p>
@@ -47,7 +47,7 @@ function Container({title,views,time,channel,verified,id,children,deleteVideos,e
       <div className="custom-btn">
         {children}
       </div>
-      <button className="close" onClick={() =>deleteVideos(id)}>X</button>
+      <button className="close" onClick={() =>    dispatch({type:'DELETE', payload:id})}>X</button>
       <button className="close edit" onClick={() =>editVideos(id)}>Edit</button>
     </div>
     </>

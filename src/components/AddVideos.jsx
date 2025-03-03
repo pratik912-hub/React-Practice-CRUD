@@ -9,16 +9,15 @@ const initialState = {
   time: "24hr Ago",
   verified: true
 }
-function AddVideos({addVideos,updateVideo,editableVideo}) {
+function AddVideos({dispatch,updateVideo,editableVideo}) {
   const [video, setVideos] = useState(initialState);
 
   function handleSubmit(e) {
     e.preventDefault();
     if(editableVideo){
-      updateVideo(video)
-    }
+      dispatch({type:'UPDATE', payload:video})    }
     else{
-      addVideos(video); //Sends the date to parent
+      dispatch({type:'Add', payload:video})
     }
     setVideos(initialState) //Resets Form
     console.log(video);
