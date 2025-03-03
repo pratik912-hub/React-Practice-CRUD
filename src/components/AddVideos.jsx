@@ -5,7 +5,7 @@ import { useEffect } from "react";
 const initialState = {
   views: '',
   title: '',
-  channel: "Coder Dost",
+  channel: "Coding Dost",
   time: "24hr Ago",
   verified: true
 }
