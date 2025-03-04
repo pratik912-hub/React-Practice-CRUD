@@ -20,6 +20,7 @@ function Counter(){
         //     // setNumber(number+1) //it will not print the multiple time based on your click
         //     setNumber(number=>number + 1); //it will  print the multiple time based on your click
         // }, 300);
+        // This is just for demo purpose
         console.log(number)
     }
     
