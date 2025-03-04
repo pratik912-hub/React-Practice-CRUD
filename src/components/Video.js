@@ -50,7 +50,7 @@ const theme = useContext(ThemeContext)
       <div className="custom-btn">
         {children}
       </div>
-      <button className="close" onClick={() =>    dispatch({type:'DELETE', payload:id})}>X</button>
+      <button className="close" onClick={() => dispatch({type:'DELETE', payload:id})}>X</button>
       <button className="close edit" onClick={() =>editVideos(id)}>Edit</button>
     </div>
     </>

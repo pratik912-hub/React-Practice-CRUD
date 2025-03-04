@@ -15,6 +15,8 @@ function App() {
 
   const [editableVideo, setEditableVideo] = useState(null);
 
+  //For The Change the State of dark mode to light mode for useContex
+  const [mode,setMode] = useState('darkTheme')
 
   function videoReducer(obj,action){
     switch(action.type){
@@ -38,19 +40,21 @@ function App() {
 
   const [obj,dispatch] = useReducer(videoReducer,objDB)
 
-  const themeContext =  useContext(ThemeContext)
- console.log({themeContext})
-
   function editVideos(id){
    setEditableVideo(obj.find(video => video.id === id));
   }
 
   return (
     <>
-      <div className={`parent ${themeContext}`}>
+    <ThemeContext.Provider value={mode}>
+      <div className="custom-btn">
+      <button onClick={()=>setMode(mode === 'darkTheme' ? 'lightTheme':'darkTheme')}>Mode</button>
+      </div>
+      <div className={`parent ${mode}`}>
         <AddVideos dispatch={dispatch}  editableVideo={editableVideo}></AddVideos>
         <VideoList dispatch={dispatch} editVideos={editVideos} obj={obj}></VideoList>
       </div>
+    </ThemeContext.Provider>
     </>
   );
 }

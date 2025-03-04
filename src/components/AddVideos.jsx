@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./AddVideos.css";
 import { useEffect } from "react";
+import ThemeContext from "../context/ThemeContext";
+
 
 const initialState = {
   views: '',
@@ -9,7 +11,8 @@ const initialState = {
   time: "24hr Ago",
   verified: true
 }
-function AddVideos({dispatch,updateVideo,editableVideo}) {
+
+function AddVideos({dispatch,editableVideo}) {
   const [video, setVideos] = useState(initialState);
 
   function handleSubmit(e) {
@@ -37,6 +40,8 @@ function AddVideos({dispatch,updateVideo,editableVideo}) {
       setVideos(editableVideo);
     }
   }, [editableVideo]);
+  
+  const theme = useContext(ThemeContext);
 
   return (
     <form>
@@ -55,7 +60,7 @@ function AddVideos({dispatch,updateVideo,editableVideo}) {
         value={video.views}
       />
       <div className="custom-btn">
-        <button
+        <button className={theme}
           onClick={handleSubmit}>
           {editableVideo? 'Edit' : 'Add'} Video
         </button>
