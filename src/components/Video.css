@@ -19,6 +19,14 @@
   flex-direction: column;
   position: relative;
 }
+
+.box.darkTheme{
+  color: white;
+}
+
+.box.lightTheme{
+  color: black;
+}
 .box-content {
   display: flex;
   justify-content: space-between;
@@ -140,3 +148,11 @@
     transform: scale(0.98);
   }
   
+button.darkTheme{
+  background-color: black;
+  border: 1px solid skyblue;
+}
+button.lightTheme{
+  background-color: #ccc;
+  border: 1px solid skyblue
+}

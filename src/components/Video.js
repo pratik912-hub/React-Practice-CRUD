@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import "./Video.css";
+import ThemeContext from "../context/ThemeContext";
 
 function Video({ title, bgColor }) {
   return <div style={{ backgroundColor: bgColor }}>{title}</div>;
@@ -25,9 +27,10 @@ function Container({title,views,time,channel,verified,id,children,dispatch,editV
 //  else{
 //   channeJSX = <p>{channel}</p>
 //  }
+const theme = useContext(ThemeContext)
   return (
    <>
-    <div className="box" onClick={()=>console.log("App")}>
+    <div className={`box ${theme}`} onClick={()=>console.log("App")}>
       <img 
         src={`https://picsum.photos/id/${id}/200/300`}
         alt="Placeholder" 

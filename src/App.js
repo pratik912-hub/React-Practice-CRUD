@@ -2,12 +2,13 @@ import { Container } from "./components/Video";
 import "./components/Video.css";
 import objDB from "./data/data";
 import Playbutton from "./components/Playbutton";
-import { useReducer, useState } from "react";
+import { useContext, useReducer, useState } from "react";
 import AddVideos from "./components/AddVideos";
 import VideoList from "./components/VideoList";
 import Clock from "./components/Clock";
 import DropDown from "./components/DropDown";
-
+import ThemeContext from "./context/ThemeContext";
+import "./App.css";
 // import { Thumbnails, Video } from './components/Video';
 // import Lorem from './components/Video'
 function App() {
@@ -37,47 +38,19 @@ function App() {
 
   const [obj,dispatch] = useReducer(videoReducer,objDB)
 
-  // const [obj, setVideos] = useState(objDB);
-  
-
-  // function addVideos(video){
-
-  //   // dispatch({type:'Add', payload:video})
-
-  //   //action : {type:'Add', payload:video}
-  //   // setVideos([
-  //   //     ...obj,{...video,id: obj.length+1}
-  //   //   ]);
-  // }
-
-  // function deleteVideos(id){
-  //   // dispatch({type:'DELETE', payload:id})
-
-  // //   setVideos(
-  // //   obj.filter(video=>video.id!==id)
-  // // )
-  // }
+  const themeContext =  useContext(ThemeContext)
+ console.log({themeContext})
 
   function editVideos(id){
-  //  console.log(id) 
    setEditableVideo(obj.find(video => video.id === id));
   }
 
-  // function updateVideo(video){
-  //   // dispatch({type:'UPDATE', payload:video})
-
-  //   // const index = obj.findIndex(v => v.id === video.id)
-  //   // const newVideos = [...obj]
-  //   // newVideos.splice(index,1,video)
-  //   // setVideos(newVideos)
-  // }
   return (
     <>
-      <div className="parent">
+      <div className={`parent ${themeContext}`}>
         <AddVideos dispatch={dispatch}  editableVideo={editableVideo}></AddVideos>
         <VideoList dispatch={dispatch} editVideos={editVideos} obj={obj}></VideoList>
       </div>
-
     </>
   );
 }
