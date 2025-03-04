@@ -2,13 +2,18 @@ import { Container } from "./components/Video";
 import "./components/Video.css";
 import objDB from "./data/data";
 import Playbutton from "./components/Playbutton";
-import { useContext, useReducer, useState } from "react";
+import {useReducer, useState } from "react";
 import AddVideos from "./components/AddVideos";
 import VideoList from "./components/VideoList";
 import Clock from "./components/Clock";
 import DropDown from "./components/DropDown";
 import ThemeContext from "./context/ThemeContext";
 import "./App.css";
+import VideoContext from "./context/VideoContext";
+import VideoDispatchContext from "./context/VideoDispatchContext";
+
+
+
 // import { Thumbnails, Video } from './components/Video';
 // import Lorem from './components/Video'
 function App() {
@@ -47,13 +52,17 @@ function App() {
   return (
     <>
     <ThemeContext.Provider value={mode}>
+      <VideoContext.Provider value={obj}>
+        <VideoDispatchContext.Provider value={dispatch}>
       <div className="custom-btn">
       <button onClick={()=>setMode(mode === 'darkTheme' ? 'lightTheme':'darkTheme')}>Mode</button>
       </div>
       <div className={`parent ${mode}`}>
-        <AddVideos dispatch={dispatch}  editableVideo={editableVideo}></AddVideos>
-        <VideoList dispatch={dispatch} editVideos={editVideos} obj={obj}></VideoList>
+        <AddVideos  editableVideo={editableVideo}></AddVideos>
+        <VideoList  editVideos={editVideos}></VideoList>
       </div>
+      </VideoDispatchContext.Provider>
+      </VideoContext.Provider>
     </ThemeContext.Provider>
     </>
   );

@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import "./Video.css";
 import ThemeContext from "../context/ThemeContext";
+import VideoDispatchContext from "../context/VideoDispatchContext";
+import useVideoDispatch from "../hooks/VideoDispatch";
 
 function Video({ title, bgColor }) {
   return <div style={{ backgroundColor: bgColor }}>{title}</div>;
@@ -19,7 +21,7 @@ function Lorem() {
   return <div className={colour}>Lorem</div>;
 }
 
-function Container({title,views,time,channel,verified,id,children,dispatch,editVideos}) {
+function Container({title,views,time,channel,verified,id,children,editVideos}) {
   let channeJSX;
 //  if(verified){
 //   channeJSX = <p>{channel}✅</p>
@@ -28,6 +30,7 @@ function Container({title,views,time,channel,verified,id,children,dispatch,editV
 //   channeJSX = <p>{channel}</p>
 //  }
 const theme = useContext(ThemeContext)
+const dispatch = useVideoDispatch();
   return (
    <>
     <div className={`box ${theme}`} onClick={()=>console.log("App")}>

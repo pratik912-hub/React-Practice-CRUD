@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import "./AddVideos.css";
 import { useEffect } from "react";
 import ThemeContext from "../context/ThemeContext";
+import useVideoDispatch from "../hooks/VideoDispatch";
 
 
 const initialState = {
@@ -12,9 +13,9 @@ const initialState = {
   verified: true
 }
 
-function AddVideos({dispatch,editableVideo}) {
+function AddVideos({editableVideo}) {
   const [video, setVideos] = useState(initialState);
-
+  const dispatch = useVideoDispatch();
   function handleSubmit(e) {
     e.preventDefault();
     if(editableVideo){

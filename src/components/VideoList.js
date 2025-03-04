@@ -1,7 +1,9 @@
 import { Container } from "./Video";
 import Playbutton from "./Playbutton";
+import useVideos from "../hooks/Videos";
 
-function VideoList({obj,dispatch,editVideos}){
+function VideoList({editVideos}){
+  const obj = useVideos();
     return(
         <>
         {obj.map((videos) => (
@@ -14,7 +16,6 @@ function VideoList({obj,dispatch,editVideos}){
               channel={videos.channel}
               id={videos.id}
               editVideos={editVideos}
-              dispatch={dispatch}
             >
               <Playbutton
                 onPlay={() => console.log("Playing", videos.title)}
